@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
             // turn it into it's new base
             if (newbaseval != 10) {
                 while (base10num != 0) {
-                    output += alphabet[base10num % newbaseval]
+                    output = alphabet[base10num % newbaseval] + output
                     base10num = Math.floor(base10num/newbaseval)
                 }
             } else {

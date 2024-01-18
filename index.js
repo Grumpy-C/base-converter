@@ -23,9 +23,9 @@ window.addEventListener("DOMContentLoaded", () => {
             let output = "";
     
             //DEBUG 1 START
-                conosle.log("inpval = " + inpval)
-                conosle.log("initbaseval = " + initbaseval)
-                conosle.log("newbaseval = " + newbaseval)
+                console.log("inpval = " + inpval)
+                console.log("initbaseval = " + initbaseval)
+                console.log("newbaseval = " + newbaseval)
             //DEBUG 1 END
     
             for (let index = 0; index < inpval.length; index++) {
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
     
             //DEBUG 2 START
-                conosle.log("base10num = " + base10num)
+                console.log("base10num = " + base10num)
             //DEBUG 2 END
     
             if (newbaseval != 10) {
@@ -47,14 +47,14 @@ window.addEventListener("DOMContentLoaded", () => {
             }
     
             //DEBUG 3 START
-                conosle.log("base10num = " + base10num)
-                conosle.log("output = " + output)
+                console.log("base10num = " + base10num)
+                console.log("output = " + output)
             //DEBUG 3 END
     
             out.innerText = output
     
         } catch(err) {
-            alert("An error occured:" + err.message);
+            alert("An error occured: " + err.message);
         }
     });
 });

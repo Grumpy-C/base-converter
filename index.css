@@ -1,6 +1,28 @@
 body {
     text-align: center;
-    padding-top: 10px;
-    background-color: rgb(211, 219, 224);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    padding: 10px;
+    background-color: rgb(12, 24, 48);
+    color:rgb(213, 224, 224);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+}
+
+#inp {
+    width: 50%;
+}
+
+#initbase {
+    width: 30%;
+}
+ 
+#newbase {
+    width: 30%;
+}
+
+#submit {
+    width: 20%;
+}
+
+#out {
+    width: 50%;
 }

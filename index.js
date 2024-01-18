@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
             let newbaseval = Number(newbase.value);
     
             if (isNaN(newbaseval) || isNaN(initbaseval)) {throw "Base is not a number"}
+            if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36) {throw "Invalid base"}
             
             let base10num = 0;
             let output = "";
@@ -54,7 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.log("output = " + output)
             //DEBUG 3 END
     
-            out.innerText = output
+            out.value = output
     
         } catch(err) {
             alert("An error occured: " + err.message);

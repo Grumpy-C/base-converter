@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
             
             // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
-                base10num += alphabet.indexOf(inpval[index]) * initbaseval**index
+                base10num += alphabet.indexOf(inpval[index]) * initbaseval**(inpval.length - index - 1)
             }
     
             //DEBUG 2 START

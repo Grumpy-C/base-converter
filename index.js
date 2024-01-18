@@ -13,12 +13,13 @@ const out = document.getElementById("out")
 window.addEventListener("DOMContentLoaded", () => {
     submit.addEventListener("click", () => {
         try {
-            let inpval = inp.value.toLowerCase;
+            // get values from inputs
+            let inpval = inp.value.toLowerCase();
             let initbaseval = Number(initbase.value);
             let newbaseval = Number(newbase.value);
     
             if (isNaN(newbaseval) || isNaN(initbaseval)) {throw "Base is not a number"}
-    
+            
             let base10num = 0;
             let output = "";
     
@@ -27,7 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.log("initbaseval = " + initbaseval)
                 console.log("newbaseval = " + newbaseval)
             //DEBUG 1 END
-    
+            
+            // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
                 base10num += alphabet.indexOf(inpval[index]) * initbaseval**index
             }
@@ -35,7 +37,8 @@ window.addEventListener("DOMContentLoaded", () => {
             //DEBUG 2 START
                 console.log("base10num = " + base10num)
             //DEBUG 2 END
-    
+            
+            // turn it into it's new base
             if (newbaseval != 10) {
                 while (base10num != 0) {
                     output += alphabet[base10num % newbaseval]

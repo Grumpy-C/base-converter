@@ -1,5 +1,8 @@
 /*
-TODO: debug and add sint support
+TODO: 
+- debug 
+- add sint support
+- implement error messages so they are not an alert
 */
 
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -8,24 +11,28 @@ const inp = document.getElementById("inp");
 const initbase = document.getElementById("initbase");
 const newbase = document.getElementById("newbase");
 const submit = document.getElementById("submit");
-const out = document.getElementById("out")
+const out = document.getElementById("out");
+const errormsg = document.getElementById("error");
 
 window.addEventListener("DOMContentLoaded", () => {
     submit.addEventListener("click", () => {
         try {
             // get values from inputs
             let inpval = inp.value.toLowerCase();
-            let initbaseval = Number(initbase.value);
-            let newbaseval = Number(newbase.value);
+            let initbaseval = BigInt(Number(initbase.value));
+            let newbaseval = BigInt(Number(newbase.value));
 
             if (isNaN(newbaseval) || isNaN(initbaseval)) {
-                throw "Base is not a number";
+                throw new Error("Base is not a number");
             };
-            if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36) {
-                throw "Invalid base"
+            if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36 || inp < 0) {
+                throw new Error("Value not in valid range");
             };
-            
-            let base10num = 0;
+            if (isFloat(initbaseval) || isFloat(newbaseval) || isFloat(inp)) {
+                throw new Error("Values should be an integer");
+            };
+
+            let base10num = 0n;
             let output = "";
     
             //DEBUG 1 START
@@ -36,6 +43,9 @@ window.addEventListener("DOMContentLoaded", () => {
             
             // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
+                if (alphabet.indexOf(inpval[index]) > initbaseval) {
+                    throw new Error("Invalid Inputted Number");
+                };
                 base10num += alphabet.indexOf(inpval[index]) * initbaseval**(inpval.length - index - 1);
             }
     
@@ -47,7 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (newbaseval != 10) {
                 while (base10num != 0) {
                     output = alphabet[base10num % newbaseval] + output;
-                    base10num = Math.floor(base10num/newbaseval);
+                    base10num = base10num/newbaseval
                 }
             } else {
                 output = base10num
@@ -62,7 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
             out.value = output
     
         } catch(err) {
-            alert("An error occured: " + err.message);
+            errormsg.innerText = "An error occured: " + err.message
         };
     });
 });

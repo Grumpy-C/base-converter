@@ -18,6 +18,7 @@ input {
     color: rgb(227, 238, 238);
     padding: 10px;
     margin: 10px;
+    margin-top: 2px;
 }
 
 input:focus {

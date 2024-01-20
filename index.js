@@ -21,10 +21,10 @@ window.addEventListener("DOMContentLoaded", () => {
             let initbaseval = BigInt(initbase.value);
             let newbaseval = BigInt(newbase.value);
 
-            if (isNaN(newbaseval) || isNaN(initbaseval)) {
+            if (isNaN(Number(newbaseval)) || isNaN(Number(initbaseval))) {
                 throw new Error("Base is not a number");
             };
-            if (initbaseval < 2n || initbaseval > 36n || newbaseval < 2n || newbaseval > 36n || inp < 0n) {
+            if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36 || inp < 0) {
                 throw new Error("Value not in valid range");
             };
             if (isFloat(initbaseval) || isFloat(newbaseval) || isFloat(inp)) {

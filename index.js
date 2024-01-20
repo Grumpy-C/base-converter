@@ -2,7 +2,6 @@
 TODO: 
 - debug 
 - add sint support
-- implement error messages so they are not an alert
 */
 
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -19,13 +18,13 @@ window.addEventListener("DOMContentLoaded", () => {
         try {
             // get values from inputs
             let inpval = inp.value.toLowerCase();
-            let initbaseval = BigInt(Number(initbase.value));
-            let newbaseval = BigInt(Number(newbase.value));
+            let initbaseval = BigInt(initbase.value);
+            let newbaseval = BigInt(newbase.value);
 
             if (isNaN(newbaseval) || isNaN(initbaseval)) {
                 throw new Error("Base is not a number");
             };
-            if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36 || inp < 0) {
+            if (initbaseval < 2n || initbaseval > 36n || newbaseval < 2n || newbaseval > 36n || inp < 0n) {
                 throw new Error("Value not in valid range");
             };
             if (isFloat(initbaseval) || isFloat(newbaseval) || isFloat(inp)) {
@@ -43,10 +42,10 @@ window.addEventListener("DOMContentLoaded", () => {
             
             // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
-                if (alphabet.indexOf(inpval[index]) > initbaseval) {
+                if (BigInt(alphabet.indexOf(inpval[index])) > initbaseval) {
                     throw new Error("Invalid Inputted Number");
                 };
-                base10num += alphabet.indexOf(inpval[index]) * initbaseval**(inpval.length - index - 1);
+                base10num += BigInt(alphabet.indexOf(inpval[index])) * (initbaseval ** BigInt(inpval.length - index - 1));
             }
     
             //DEBUG 2 START
@@ -54,8 +53,8 @@ window.addEventListener("DOMContentLoaded", () => {
             //DEBUG 2 END
             
             // turn it into it's new base
-            if (newbaseval != 10) {
-                while (base10num != 0) {
+            if (newbaseval != 10n) {
+                while (base10num != 0n) {
                     output = alphabet[base10num % newbaseval] + output;
                     base10num = base10num/newbaseval
                 }
@@ -73,6 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
     
         } catch(err) {
             errormsg.innerText = "An error occured: " + err.message
+            console.log(err)
         };
     });
 });

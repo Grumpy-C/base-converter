@@ -43,8 +43,8 @@ window.addEventListener("DOMContentLoaded", () => {
             // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
                 alphabetval = BigInt(alphabet.indexOf(inpval[index]))
-                
-                if (alphabetval > (initbaseval - 1) || alphabetval < 0) {
+
+                if (alphabetval > (initbaseval - 1n) || alphabetval < 0n) {
                     throw new Error("Invalid inputted number");
                 };
                 base10num += alphabetval * (initbaseval ** BigInt(inpval.length - index - 1));

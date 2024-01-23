@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (initbaseval < 2 || initbaseval > 36 || newbaseval < 2 || newbaseval > 36 || inp < 0) {
                 throw new Error("Value not in valid range");
             };
-            if (isFloat(initbaseval) || isFloat(newbaseval) || isFloat(inp)) {
+            if (inpval.includes(".")) {
                 throw new Error("Values should be an integer");
             };
 

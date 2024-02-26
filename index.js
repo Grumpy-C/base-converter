@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 alphabetval = BigInt(alphabet.indexOf(inpval[index]))
 
-                if (inpval[index] != "-" && index == 0) {
+                if (inpval[index] == "-" && index == 0) {
                     negativeflag = true
                 } else {
                     if (alphabetval > (initbaseval - 1n) || alphabetval < 0n) {

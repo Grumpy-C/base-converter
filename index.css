@@ -19,6 +19,7 @@ input {
     padding: 10px;
     margin: 10px;
     margin-top: 2px;
+    border-radius: 2px;
 }
 
 input:focus {
@@ -37,20 +38,21 @@ input:focus {
 }
 
 #submit {
+    border-radius: 2px;
     outline: none;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 60px;
     font-size: 16pt;
-    border: 2px solid rgb(90, 140, 180);
-    background-color: rgb(11, 18, 49);
+    border: 2px solid rgb(151, 184, 211);
+    background-color: rgb(23, 32, 68);
     color: rgb(227, 238, 238);
     padding: 15px;
     width: 10%;
     margin: 24px;
 } 
 
-#submit {
-    border: 2px solid rgb(151, 184, 211);
-    background-color: rgb(23, 32, 68);
+#submit:hover {
+    border: 2px solid rgb(167, 196, 219);
+    background-color: rgb(29, 48, 82);
 }

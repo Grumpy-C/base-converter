@@ -1,9 +1,3 @@
-/*
-TODO: 
-- debug 
-- add sint support
-*/
-
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
 
 const inp = document.getElementById("inp");
@@ -20,6 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
             let inpval = inp.value.toLowerCase();
             let initbaseval = BigInt(initbase.value);
             let newbaseval = BigInt(newbase.value);
+            let negativeflag = false;
 
             if (isNaN(Number(newbaseval)) || isNaN(Number(initbaseval))) {
                 throw new Error("Base is not a number");
@@ -35,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
             let output = "";
     
             //DEBUG 1 START
+                console.log("----------" + inpval);
                 console.log("inpval = " + inpval);
                 console.log("initbaseval = " + initbaseval);
                 console.log("newbaseval = " + newbaseval);
@@ -42,10 +38,15 @@ window.addEventListener("DOMContentLoaded", () => {
             
             // turn the number into base 10
             for (let index = 0; index < inpval.length; index++) {
+
                 alphabetval = BigInt(alphabet.indexOf(inpval[index]))
 
-                if (alphabetval > (initbaseval - 1n) || alphabetval < 0n) {
-                    throw new Error("Invalid inputted number");
+                if (inpval[index] != "-" && index == 0) {
+                    negativeflag = true
+                } else {
+                    if (alphabetval > (initbaseval - 1n) || alphabetval < 0n) {
+                        throw new Error("Invalid inputted number");
+                    };
                 };
                 base10num += alphabetval * (initbaseval ** BigInt(inpval.length - index - 1));
             }
@@ -64,10 +65,15 @@ window.addEventListener("DOMContentLoaded", () => {
                 output = base10num
                 base10num = 0
             };
+
+            if (negativeflag == true) {
+                output = "-" + output;
+            }
     
             //DEBUG 3 START
                 console.log("base10num = " + base10num);
                 console.log("output = " + output);
+                console.log("----------" + inpval);
             //DEBUG 3 END
     
             out.value = output

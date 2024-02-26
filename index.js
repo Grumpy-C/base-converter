@@ -44,11 +44,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 if (inpval[index] == "-" && index == 0) {
                     negativeflag = true
                 } else {
+
+                    base10num += alphabetval * (initbaseval ** BigInt(inpval.length - index - 1));
+                    
                     if (alphabetval > (initbaseval - 1n) || alphabetval < 0n) {
                         throw new Error("Invalid inputted number");
                     };
                 };
-                base10num += alphabetval * (initbaseval ** BigInt(inpval.length - index - 1));
             }
     
             //DEBUG 2 START
